@@ -1,0 +1,103 @@
+<!-- Copyright Paul Viau (Viau Computer Solutions) 2014 -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Fury Typing!</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<meta name="robots" content="index,follow" />
+	<link rel="stylesheet" type="text/css" href="css/styles.css" />
+	<!-- Change this script to change the main dictionary file -->
+	<script src="js/dict.js"></script>
+<script type="text/JavaScript">
+function howToPlay(){
+	var newText = "<table width='600'><tr><td><li>Type the words at the bottom as quickly and as accurately as possible.<br><li>Your score will increase significantly if you do not make any mistakes.<br><li>A combo of 4 words will give you a multiplier and can increase up to 4x.<br><li>You will level up every 10 lines cleared. To a max of level 10. The lines will appear faster every level.</td></tr></table>";
+	var newTitle = "<h3>How to Play</h3>"
+	document.getElementById('Title').innerHTML = newTitle;
+	document.getElementById('Text').innerHTML = newText;
+	}
+	function credits(){
+	var newText = "<table width='600'><tr><td><li>Game designed and coded by Paul Viau owner of <a href='http://www.viaucs.ca'>Viau Computer Solutions</a> using Notepad++, HTML5 and JavaScript inspired by some Tetris and Guitar Hero (scoring) elements<li>Game sounds and music provided by <a href='http://www.freesound.org'>http://www.freesound.org</a><li>Dictionary provided by Public domain word list enable1.txt	<li>Thanks Yves, Scott and my wife for your feedback and bouncing ideas off you all the time =).</td></tr></table>";
+	var newTitle = "<h3>Credits:</h3>"
+	document.getElementById('Title').innerHTML = newTitle;
+	document.getElementById('Text').innerHTML = newText;
+	}
+	function changes(){
+		var newTitle = "<h3>Latest Updates:</h3>"
+		document.getElementById('Title').innerHTML = newTitle;
+		document.getElementById("Text").innerHTML="<iframe src='changes.html' width=600 height=600></iframe>";
+	}
+	function chooseDifficulty(){
+		var x = document.getElementById("SelectDifficulty").value;
+		if (x == "Easy")
+		wordMaxLength = 5;
+		if (x == "Normal")
+		wordMaxLength = 8;
+		if (x == "Difficult")
+		wordMaxLength = 10;
+		if (x == "Nightmare")
+		wordMaxLength = 12;
+	}
+	function soundOnOff(){
+	var x = document.getElementById("SoundOnOff").checked;
+		if (x == true){
+			document.getElementById("SoundEnabled").innerHTML = "Sound On";
+			audio.muted = false;
+			clockSound.muted = false;
+			bgmusic.muted = false;
+			countdown.muted = false;
+		}
+		if (x == false){
+			document.getElementById("SoundEnabled").innerHTML = "Sound Off";
+			audio.muted = true;
+			clockSound.muted = true;
+			bgmusic.muted = true;
+			countdown.muted = true;
+		}
+}
+</script>
+	</head>
+
+<body onLoad="chooseDifficulty(); displayHighScores()">
+<div align="center"><canvas id="canvas_id">Your browser does not support the HTML5 canvas tag.</canvas></div>
+<!-- Change this script to change the main game script -->
+<script src="js/singleCode.js"></script>
+<center>
+<table>
+  <tr>
+    <th>
+	Select Difficulty: <br>
+<select id="SelectDifficulty" onchange="chooseDifficulty()" autofocus>
+  <option value="Easy">Easy (Maximum 5 letter words)</option>
+  <option value="Normal" selected="selected">Normal (Maximum 8 letter words)</option>
+  <option value="Difficult">Difficult (Maximum 10 letter words)</option>
+  <option value="Nightmare">Nightmare (Maximum 12 letter words)</option>
+</select></th>
+    <th><div id="SoundEnabled">Sound On</div> <input type="checkbox" id="SoundOnOff" checked onchange=soundOnOff()></th>
+  </tr>
+</table>
+<p>
+<div id="HighScoreText"></div>
+<p>
+<a href='javascript:howToPlay()'>How to Play</a> | <a href='javascript:changes();'>Latest Updates</a> | <a href='javascript:credits()'>Credits</a>
+<div id="Title"></div>
+<div id="Text"></div>
+<p>
+Notes:
+<table width="600">
+    <tr>
+        <td>
+			<li>This is a game I created out of hobby for learning HTML5 canvas elements. 
+			<li>I am aware the game has some bugs in it. I believe I need to redesign from ground up to make it more efficient and more appealing. I currently do not have the time to do that.</td>
+        <td>
+			<li>Please note although I found the list of words that go into this game, I did not choose the individual words for the game. Some words may be offending, please use at your own discretion.
+			<li>Backspace will toggle background music on/off
+			</td>
+    </tr>
+</table>
+<p>
+<h6>Copyright Paul Viau (Viau Computer Solutions) 2014-2016 </h6>
+</center>
+</body>
+</html>
